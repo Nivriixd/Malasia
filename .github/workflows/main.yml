@@ -25,3 +25,9 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+
+      - name: Guardar el archivo JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: mi-aplicacion-jar
+          path: build/libs/*.jar
