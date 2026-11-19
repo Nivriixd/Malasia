@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model": "casinovidas:block/digitizer" }
+    "facing=north": { "model": "casinovidas:block/digitizer" },
+    "facing=east":  { "model": "casinovidas:block/digitizer", "y": 90 },
+    "facing=south": { "model": "casinovidas:block/digitizer", "y": 180 },
+    "facing=west":  { "model": "casinovidas:block/digitizer", "y": 270 }
   }
 }

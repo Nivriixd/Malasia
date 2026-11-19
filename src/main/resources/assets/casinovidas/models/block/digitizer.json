@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/orientable",
   "textures": {
-    "all": "minecraft:block/lapis_block"
+    "top": "casinovidas:block/digitizer_side",
+    "front": "casinovidas:block/digitizer_front",
+    "side": "casinovidas:block/digitizer_side"
   }
 }

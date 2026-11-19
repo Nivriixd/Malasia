@@ -14,7 +14,10 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -22,15 +25,27 @@ import net.minecraft.world.phys.BlockHitResult;
  * Digitalizador: clic derecho con monedas en la mano y todo el stack se suma al balance.
  * Con la mano vacia (o con otro item) muestra el balance actual.
  */
-public class DigitizerBlock extends Block {
+public class DigitizerBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<DigitizerBlock> CODEC = simpleCodec(DigitizerBlock::new);
 
     public DigitizerBlock(Properties properties) {
         super(properties);
+        registerDefaultState(stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH));
     }
 
     @Override
-    protected MapCodec<? extends Block> codec() {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        // La pantalla mira hacia el jugador que lo coloca
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
         return CODEC;
     }
 
