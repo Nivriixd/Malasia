@@ -1,4 +1,4 @@
-# Plantilla: los ${...} los rellena Gradle desde gradle.properties (igual que en el MDK oficial).
+# Plantilla: Gradle rellena estos valores desde gradle.properties.
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
