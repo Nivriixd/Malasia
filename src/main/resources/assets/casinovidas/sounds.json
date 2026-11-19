@@ -1,0 +1,16 @@
+{
+  "spinning": {
+    "sounds": [
+      {
+        "name": "casinovidas:spinning",
+        "stream": true
+      }
+    ]
+  },
+  "reel_stop": {
+    "sounds": [
+      "casinovidas:stop"
+    ]
+  }
+}
+

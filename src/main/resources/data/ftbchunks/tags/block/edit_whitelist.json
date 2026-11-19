@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "casinovidas:server_slot_machine",
+      "required": false
+    }
+  ]
+}
