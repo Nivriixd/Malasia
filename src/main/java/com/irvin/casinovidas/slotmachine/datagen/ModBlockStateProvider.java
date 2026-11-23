@@ -14,8 +14,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        horizontalBlock(ModBlocks.SERVER_SLOT_MACHINE.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/server_slot_machine")));
         horizontalBlock(ModBlocks.DIGITIZER.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/digitizer")));
     }
