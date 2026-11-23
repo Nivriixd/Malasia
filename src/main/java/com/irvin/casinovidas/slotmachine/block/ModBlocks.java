@@ -16,10 +16,6 @@ public class ModBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(CasinoVidasMod.MOD_ID);
 
-    public static final DeferredHolder<Block, Block> SERVER_SLOT_MACHINE = registerBlock("server_slot_machine",
-            () -> new ServerSlotMachineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)
-                    .strength(5.0F, 3600000.8F).requiresCorrectToolForDrops().noOcclusion()));
-
     public static final DeferredHolder<Block, Block> DIGITIZER = registerBlock("digitizer",
             () -> new DigitizerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)
                     .strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
