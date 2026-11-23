@@ -1,5 +1,4 @@
 {
-  "block.casinovidas.server_slot_machine": "Tragamonedas del Casino",
   "item.casinovidas.coin": "Moneda del Casino",
   "slots.gui.stop": "Parar",
   "slots.gui.spin": "¡Girar!",
@@ -12,7 +11,6 @@
   "slots.gui.prizes": "Premios",
   "slots.gui.coins": "%s monedas",
   "message.slotmachinemod.coins_added": "+%s monedas",
-  "message.slotmachinemod.coins_won": "¡Ganaste %s monedas!",
   "message.slotmachinemod.item_won": "¡Ganaste %s x %s!",
   "item.casinovidas.heart": "Corazón",
   "item.casinovidas.golden_heart": "Corazón Dorado",
