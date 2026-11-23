@@ -1,5 +1,4 @@
 {
-  "block.casinovidas.server_slot_machine": "Server Slot Machine",
   "slots.gui.stop": "Stop",
   "slots.gui.spin": "Spin!",
   "slots.gui.not_configured": "Not configured",
@@ -11,7 +10,6 @@
   "slots.gui.not_enough_coins": "Not enough coins!",
   "slots.gui.coins": "%s coins",
   "message.slotmachinemod.coins_added": "+%s coins",
-  "message.slotmachinemod.coins_won": "You won %s coins!",
   "message.slotmachinemod.item_won": "You won %s x %s!",
   "item.casinovidas.heart": "Heart",
   "item.casinovidas.golden_heart": "Golden Heart",
