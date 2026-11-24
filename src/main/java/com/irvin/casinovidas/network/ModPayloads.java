@@ -2,6 +2,7 @@ package com.irvin.casinovidas.network;
 
 import com.irvin.casinovidas.slotmachine.network.packet.BalanceS2CPayload;
 import com.irvin.casinovidas.vidas.network.SyncLivesPayload;
+import com.irvin.casinovidas.niveles.NivelCirculoPayload;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
