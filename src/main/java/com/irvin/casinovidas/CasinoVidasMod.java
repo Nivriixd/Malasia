@@ -1,5 +1,6 @@
 package com.irvin.casinovidas;
 
+import com.irvin.casinovidas.niveles.NivelServerEvents;
 import com.irvin.casinovidas.network.ModPayloads;
 import com.irvin.casinovidas.slotmachine.block.ModBlocks;
 import com.irvin.casinovidas.slotmachine.block.ModItems;
@@ -24,6 +25,7 @@ public class CasinoVidasMod {
         VidasItems.ITEMS.register(modBus);
         modBus.addListener(VidasItems::addToCreativeTab);
         NeoForge.EVENT_BUS.register(new ServerEvents());
+        NeoForge.EVENT_BUS.register(new NivelServerEvents());
 
         CoinItems.init();
         ModItems.register(modBus);
