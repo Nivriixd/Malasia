@@ -16,6 +16,8 @@ public final class ModPayloads {
 
         registrar.playToClient(SyncLivesPayload.TYPE, SyncLivesPayload.STREAM_CODEC, SyncLivesPayload::handle);
 
+        registrar.playToClient(NivelCirculoPayload.TYPE, NivelCirculoPayload.STREAM_CODEC, NivelCirculoPayload::handle);
+        
         registrar.playToClient(BalanceS2CPayload.TYPE, BalanceS2CPayload.STREAM_CODEC, BalanceS2CPayload::handle);
     }
 }
