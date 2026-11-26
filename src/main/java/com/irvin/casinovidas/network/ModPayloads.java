@@ -15,6 +15,8 @@ public final class ModPayloads {
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(PROTOCOL);
 
+        registrar.playToServer(FuerzaToggleC2SPayload.TYPE, FuerzaToggleC2SPayload.STREAM_CODEC, FuerzaToggleC2SPayload::handle);
+        
         registrar.playToClient(SyncLivesPayload.TYPE, SyncLivesPayload.STREAM_CODEC, SyncLivesPayload::handle);
 
         registrar.playToClient(NivelCirculoPayload.TYPE, NivelCirculoPayload.STREAM_CODEC, NivelCirculoPayload::handle);
