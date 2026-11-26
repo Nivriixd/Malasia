@@ -1,13 +1,6 @@
 package com.irvin.casinovidas.niveles;
 
-import net.minecraft.core.Holder;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.level.GameRules;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +10,7 @@ public final class NivelEvents {
     private NivelEvents() {}
 
     /** alActivar = se ejecuta una vez. cadaSegundo = se repite cada segundo mientras esté activo (puede ser null). */
-    public record Def(NivelColor color, int numero, String nombre,
+    public record Def(NivelColor color, int numero, String titulo, String descripcion,
                       Consumer<MinecraftServer> alActivar, Consumer<MinecraftServer> cadaSegundo) {
         public String key() { return color.id + "_" + numero; }
     }
@@ -25,35 +18,43 @@ public final class NivelEvents {
     public static final List<Def> ALL = new ArrayList<>();
 
     static {
-        add(NivelColor.VERDE, 1, "Dificultad fácil", s -> s.setDifficulty(Difficulty.EASY, true), null);
-        add(NivelColor.VERDE, 2, "Regeneración para todos", s -> {}, s -> effect(s, MobEffects.REGENERATION));
-        add(NivelColor.VERDE, 3, "Mantener inventario al morir",
-                s -> s.getGameRules().getRule(GameRules.RULE_KEEPINVENTORY).set(true, s), null);
-        add(NivelColor.VERDE, 4, "Clima despejado",
-                s -> s.overworld().setWeatherParameters(12000, 0, false, false), null);
-      
-        add(NivelColor.AMARILLO, 1, "Dificultad normal", s -> s.setDifficulty(Difficulty.NORMAL, true), null);
-        add(NivelColor.AMARILLO, 2, "Hambre para todos", s -> {}, s -> effect(s, MobEffects.HUNGER));
-        add(NivelColor.AMARILLO, 3, "Lluvia",
-                s -> s.overworld().setWeatherParameters(0, 12000, true, false), null);
-        add(NivelColor.AMARILLO, 4, "Ya no se mantiene el inventario",
-                s -> s.getGameRules().getRule(GameRules.RULE_KEEPINVENTORY).set(false, s), null);
-
-        add(NivelColor.ROJO, 1, "Dificultad difícil", s -> s.setDifficulty(Difficulty.HARD, true), null);
-        add(NivelColor.ROJO, 2, "Debilidad para todos", s -> {}, s -> effect(s, MobEffects.WEAKNESS));
-        add(NivelColor.ROJO, 3, "Tormenta",
-                s -> s.overworld().setWeatherParameters(0, 12000, true, true), null);
-        add(NivelColor.ROJO, 4, "Jugadores brillando", s -> {}, s -> effect(s, MobEffects.GLOWING));
+        // ---------- VERDE (fácil) ----------
+        msg(NivelColor.VERDE, 1, "Tarea del día", "Consigue 6 diamantes y reclama tu recompensa.");
+        msg(NivelColor.VERDE, 2, "Recomendación", "Construye tu base para protegerte y recolectar recursos.");
+        msg(NivelColor.VERDE, 3, "Tarea del día", "Consigue 3 bloques de hierro para reclamar tu recompensa.");
+        msg(NivelColor.VERDE, 4, "¡DÍA LIBRE!", "El día de hoy será libre, puedes terminar tu casa, crear tu propio automóvil, sigue recolectando recursos, etc. Suerte.");
+        msg(NivelColor.VERDE, 5, "Recordatorio", "Puedes poner la música que quieras, dónde quieras y cuándo quieras.");
+        msg(NivelColor.VERDE, 6, "Aviso", "La tienda ha actualizado su contenido.");
+        msg(NivelColor.VERDE, 7, "DÍA LIBRE", "Puedes explorar el espacio, jugar minijuegos, mejorar o terminar la base.");
+        msg(NivelColor.VERDE, 8, "Tarea del día", "Mata 12 mobs y recibe tu recompensa.");
+        msg(NivelColor.VERDE, 9, "Recordatorio", "Puedes decorar tu casa en modo navidad. Nuevas decoraciones para navidad, diseñadas para la creatividad (puede servir de algo para más adelante)...");
+        msg(NivelColor.VERDE, 10, "Recordatorio", "Puedes crear tu \"televisor\" para ver YouTube y otras páginas web.");
+        msg(NivelColor.VERDE, 11, "Tarea del día", "Mata 20 mobs y consigue tu recompensa.");
+        // 12 (casino habilitado): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 13, "DÍA LIBRE", "Puedes reformar tu base, crear tus propios peluches, practicar en la pista de carreras, etc.");
+        msg(NivelColor.VERDE, 14, "Tarea del día", "Consigue 2 stacks de hueso y reclama tu recompensa.");
+        // 15 (dimensión "The sift"): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 16, "Tarea del día", "Consigue 2 bloques de diamante y reclama tu recompensa.");
+        msg(NivelColor.VERDE, 17, "Aviso", "La tienda se ha actualizado, puede que lo necesites.");
+        msg(NivelColor.VERDE, 18, "Tarea del día", "Consigue 3 bloques de esmeralda y reclama tu recompensa.");
+        // 19 (tienda -50%): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 20, "Tarea del día", "Califica las construcciones de los demás y recoge tu recompensa.");
+        // 21 (buff de fuerza con tecla): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 22, "Tarea del día", "Mata 1 mob y recibe tu recompensa.");
+        // 23 (nether): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 24, "¡Aviso!", "El creador (Nivriixd) quiere tomar una foto grupal por ser posiblemente el último día. Reunirse todos en el Spawn.");
     }
 
-    private static void add(NivelColor c, int n, String nombre, Consumer<MinecraftServer> on, Consumer<MinecraftServer> tick) {
-        ALL.add(new Def(c, n, nombre, on, tick));
+    /** Cambio que solo informa por chat. */
+    private static void msg(NivelColor c, int n, String titulo, String descripcion) {
+        ALL.add(new Def(c, n, titulo, descripcion, s -> {}, null));
     }
 
-    private static void effect(MinecraftServer s, Holder<MobEffect> eff) {
-        for (ServerPlayer p : s.getPlayerList().getPlayers()) {
-            p.addEffect(new MobEffectInstance(eff, 80, 0, true, false));
-        }
+    /** Cambio con acción en el servidor (para los que tienen mecánica). */
+    @SuppressWarnings("unused")
+    private static void add(NivelColor c, int n, String titulo, String descripcion,
+                            Consumer<MinecraftServer> on, Consumer<MinecraftServer> tick) {
+        ALL.add(new Def(c, n, titulo, descripcion, on, tick));
     }
 
     public static List<Def> of(NivelColor c) {
