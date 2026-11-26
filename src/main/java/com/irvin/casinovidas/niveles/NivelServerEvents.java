@@ -58,7 +58,7 @@ public class NivelServerEvents {
         }
         for (NivelEvents.Def d : NivelEvents.ALL) {
             if (act.contains(d.key())) {
-                src.sendSuccess(() -> Component.literal("[" + d.color().id + " cambio" + d.numero() + "] " + d.nombre()), false);
+                src.sendSuccess(() -> Component.literal("[" + d.color().id + " cambio" + d.numero() + "] " + d.titulo()), false);
             }
         }
         return act.size();
