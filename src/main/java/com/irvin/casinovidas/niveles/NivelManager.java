@@ -49,10 +49,10 @@ public final class NivelManager {
         dat.active.add(d.key());
         dat.setDirty();
         d.alActivar().accept(s);
-        s.getPlayerList().broadcastSystemMessage(
-                Component.literal("[" + d.color().id.toUpperCase() + "] ")
+               s.getPlayerList().broadcastSystemMessage(
+                Component.literal(d.titulo())
                         .withStyle(d.color().fmt, ChatFormatting.BOLD)
-                        .append(Component.literal(d.nombre()).withStyle(ChatFormatting.WHITE)),
+                        .append(Component.literal("\n" + d.descripcion()).withStyle(ChatFormatting.WHITE)),
                 false);
     }
 
