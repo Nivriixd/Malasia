@@ -45,6 +45,18 @@ public class NivelServerEvents {
         e.getDispatcher().register(root);
     }
 
+        @SubscribeEvent
+    public void onTravel(EntityTravelToDimensionEvent e) {
+        if (!(e.getEntity().level() instanceof ServerLevel level)) return;
+        String dim = e.getDimension().location().toString();
+        if (NivelDims.isOpen(level.getServer(), dim)) return;
+
+        e.setCanceled(true);
+        if (e.getEntity() instanceof ServerPlayer p) {
+            p.displayClientMessage(Component.literal("Esta dimensión está cerrada por ahora"), true);
+        }
+    }
+
     private static int run(CommandSourceStack src, NivelEvents.Def d) {
         if (!NivelManager.activate(src.getServer(), d)) {
             src.sendFailure(Component.literal("Ese cambio ya está activo o en camino"));
