@@ -20,7 +20,7 @@ public final class NivelManager {
 
     private static final List<Pending> PENDING = new ArrayList<>();
 
-    private static NivelSavedData data(MinecraftServer s) {
+    public static NivelSavedData data(MinecraftServer s) {
         return s.overworld().getDataStorage().computeIfAbsent(NivelSavedData.factory(), "niveles");
     }
 
