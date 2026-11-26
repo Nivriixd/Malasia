@@ -52,7 +52,6 @@ public final class NivelEvents {
     }
 
     /** Cambio con acción en el servidor (para los que tienen mecánica). */
-    @SuppressWarnings("unused")
     private static void add(NivelColor c, int n, String titulo, String descripcion,
                             Consumer<MinecraftServer> on, Consumer<MinecraftServer> tick) {
         ALL.add(new Def(c, n, titulo, descripcion, on, tick));
