@@ -23,4 +23,6 @@
   "subtitle.vidas.golden": "Temporary 4th life (%s min)",
   "block.casinovidas.digitizer": "Digitizer",
   "message.casinovidas.balance": "Balance: %s coins"
+  "key.casinovidas.fuerza": "Toggle strength",
+  "key.categories.casinovidas": "Casino Vidas"
 }
