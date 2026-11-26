@@ -30,7 +30,7 @@ public final class NivelEvents {
         msg(NivelColor.VERDE, 9, "Recordatorio", "Puedes decorar tu casa en modo navidad. Nuevas decoraciones para navidad, diseñadas para la creatividad (puede servir de algo para más adelante)...");
         msg(NivelColor.VERDE, 10, "Recordatorio", "Puedes crear tu \"televisor\" para ver YouTube y otras páginas web.");
         msg(NivelColor.VERDE, 11, "Tarea del día", "Mata 20 mobs y consigue tu recompensa.");
-        // 12 (casino habilitado): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 12, "Casino habilitado", "Se habilita el casino, puedes convertir tus monedas en digital o mantenerlas en físico para usar las máquinas.");
         msg(NivelColor.VERDE, 13, "DÍA LIBRE", "Puedes reformar tu base, crear tus propios peluches, practicar en la pista de carreras, etc.");
         msg(NivelColor.VERDE, 14, "Tarea del día", "Consigue 2 stacks de hueso y reclama tu recompensa.");
         // 15 (dimensión "The sift"): pendiente, tiene mecánica
@@ -39,7 +39,8 @@ public final class NivelEvents {
         msg(NivelColor.VERDE, 18, "Tarea del día", "Consigue 3 bloques de esmeralda y reclama tu recompensa.");
         // 19 (tienda -50%): pendiente, tiene mecánica
         msg(NivelColor.VERDE, 20, "Tarea del día", "Califica las construcciones de los demás y recoge tu recompensa.");
-        // 21 (buff de fuerza con tecla): pendiente, tiene mecánica
+        add(NivelColor.VERDE, 21, "Buff", "Les cae un buff de fuerza a todos los jugadores, que se puede activar y desactivar cuando ellos quieran, con una sola tecla (G por defecto).",
+                s -> {}, NivelFuerza::tick);
         msg(NivelColor.VERDE, 22, "Tarea del día", "Mata 1 mob y recibe tu recompensa.");
         // 23 (nether): pendiente, tiene mecánica
         msg(NivelColor.VERDE, 24, "¡Aviso!", "El creador (Nivriixd) quiere tomar una foto grupal por ser posiblemente el último día. Reunirse todos en el Spawn.");
