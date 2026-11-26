@@ -33,16 +33,17 @@ public final class NivelEvents {
         msg(NivelColor.VERDE, 12, "Casino habilitado", "Se habilita el casino, puedes convertir tus monedas en digital o mantenerlas en físico para usar las máquinas.");
         msg(NivelColor.VERDE, 13, "DÍA LIBRE", "Puedes reformar tu base, crear tus propios peluches, practicar en la pista de carreras, etc.");
         msg(NivelColor.VERDE, 14, "Tarea del día", "Consigue 2 stacks de hueso y reclama tu recompensa.");
-        // 15 (dimensión "The sift"): pendiente, tiene mecánica
+        add(NivelColor.VERDE, 15, "Dimensión abierta", "Ya puedes visitar la dimensión \"The sift\".",
+                s -> NivelDims.abrir(s, NivelDims.SIFT), null);
         msg(NivelColor.VERDE, 16, "Tarea del día", "Consigue 2 bloques de diamante y reclama tu recompensa.");
         msg(NivelColor.VERDE, 17, "Aviso", "La tienda se ha actualizado, puede que lo necesites.");
         msg(NivelColor.VERDE, 18, "Tarea del día", "Consigue 3 bloques de esmeralda y reclama tu recompensa.");
-        // 19 (tienda -50%): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 19, "Aviso", "La tienda ha bajado los precios! Con un 50% de descuento todos los ítems disponibles.");
         msg(NivelColor.VERDE, 20, "Tarea del día", "Califica las construcciones de los demás y recoge tu recompensa.");
         add(NivelColor.VERDE, 21, "Buff", "Les cae un buff de fuerza a todos los jugadores, que se puede activar y desactivar cuando ellos quieran, con una sola tecla (G por defecto).",
                 s -> {}, NivelFuerza::tick);
         msg(NivelColor.VERDE, 22, "Tarea del día", "Mata 1 mob y recibe tu recompensa.");
-        // 23 (nether): pendiente, tiene mecánica
+        msg(NivelColor.VERDE, 23, "Día libre", "El nether se logró abrir de nuevo, pero está raro...");
         msg(NivelColor.VERDE, 24, "¡Aviso!", "El creador (Nivriixd) quiere tomar una foto grupal por ser posiblemente el último día. Reunirse todos en el Spawn.");
     }
 
