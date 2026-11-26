@@ -24,4 +24,6 @@
   "subtitle.vidas.golden": "4ta vida temporal (%s min)",
   "block.casinovidas.digitizer": "Digitalizador",
   "message.casinovidas.balance": "Balance: %s monedas"
+  "key.casinovidas.fuerza": "Activar/desactivar fuerza",
+  "key.categories.casinovidas": "Casino Vidas"
 }
