@@ -45,6 +45,25 @@ public final class NivelEvents {
         msg(NivelColor.VERDE, 22, "Tarea del día", "Mata 1 mob y recibe tu recompensa.");
         msg(NivelColor.VERDE, 23, "Día libre", "El nether se logró abrir de nuevo, pero está raro...");
         msg(NivelColor.VERDE, 24, "¡Aviso!", "El creador (Nivriixd) quiere tomar una foto grupal por ser posiblemente el último día. Reunirse todos en el Spawn.");
+
+                // ---------- AMARILLO (medio) ----------
+        msg(NivelColor.AMARILLO, 1, "Mobs", "Nuevos mobs spawnean.");
+        add(NivelColor.AMARILLO, 2, "Nether", "Se habilita el nether.",
+                s -> NivelDims.abrir(s, NivelDims.NETHER), null);
+        msg(NivelColor.AMARILLO, 3, "Atención!", "Nuevo avistamiento en (coordenadas) y en (coordenadas), averigua qué sucedió. Quién sabe qué encontrarás.");
+        msg(NivelColor.AMARILLO, 4, "Atención!", "Nuevo avistamiento en (coordenadas) y en (coordenadas).");
+        add(NivelColor.AMARILLO, 5, "The End", "Se habilita el end.",
+                s -> NivelDims.abrir(s, NivelDims.END), null);
+        msg(NivelColor.AMARILLO, 6, "Atención!", "Nuevo avistamiento en Ad Astra: The moon (coordenadas) y en Ad Astra: The Mars (coordenadas).");
+        msg(NivelColor.AMARILLO, 7, "CARRERAS!", "Para participar debes tener un auto, puedes comprarlo en la tienda, cuesta 40 monedas. La primera será carrera de prueba, luego la carrera real. Primer lugar: 200 monedas, Segundo lugar: 150 monedas, Tercer lugar: 100 monedas.");
+        msg(NivelColor.AMARILLO, 8, "Atención!", "Avistamiento en The sift (coordenadas), (coordenadas), (coordenadas) y en (coordenadas).");
+        add(NivelColor.AMARILLO, 9, "Nether", "Se cierra el nether.",
+                s -> NivelDims.cerrar(s, NivelDims.NETHER), null);
+        add(NivelColor.AMARILLO, 10, "The End", "Se cierra el End.",
+                s -> NivelDims.cerrar(s, NivelDims.END), null);
+        msg(NivelColor.AMARILLO, 11, "Animales", "Los animales empiezan a ser escasos.");
+        msg(NivelColor.AMARILLO, 12, "TAREA ESPECIAL!", "Encuentra un loro/perico y domestícalo para obtener tu recompensa. (100 monedas).");
+        msg(NivelColor.AMARILLO, 13, "Aviso!", "Hoy no hay tarea, solo una misión. Están a punto de dar el último paso para acabar el server. Buena suerte con lo que hay allá adentro.");
     }
 
     /** Cambio que solo informa por chat. */
