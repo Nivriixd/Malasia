@@ -49,6 +49,79 @@ public class NivelServerEvents {
         if (!NivelManager.active(e.getLevel().getLevel().getServer()).contains("amarillo_11")) return;
         if (e.getLevel().getRandom().nextFloat() < ANIMALES_CANCELADOS) e.setSpawnCancelled(true);
     }
+
+    private static int estructuraAparecer(CommandSourceStack src, ResourceLocation id) {
+        String c = NivelEstructuras.aparecerAleatoria(src.getServer(), NivelEstructuras.OVERWORLD, id);
+        src.sendSuccess(() -> Component.literal("Estructura " + id + " generándose en " + c), true);
+        return 1;
+    }
+
+    private static int estructuraLista(CommandSourceStack src) {
+        var regs = NivelEstructurasData.get(src.getServer()).estructuras;
+        if (regs.isEmpty()) {
+            src.sendSuccess(() -> Component.literal("No hay estructuras registradas"), false);
+            return 0;
+        }
+        for (var r : regs) {
+            BlockPos c = r.bb().getCenter();
+            src.sendSuccess(() -> Component.literal("#" + r.id() + " " + r.estructura()
+                    + " en " + c.getX() + ", " + c.getY() + ", " + c.getZ()), false);
+        }
+        return regs.size();
+    }
+
+    private static int estructuraBorrar(CommandSourceStack src, int id) {
+        var r = NivelEstructurasData.get(src.getServer()).buscar(id);
+        if (r == null) {
+            src.sendFailure(Component.literal("No existe la estructura #" + id));
+            return 0;
+        }
+        if (!NivelEstructuras.borrar(src.getServer(), r)) {
+            src.sendFailure(Component.literal("Esa estructura ya se está borrando"));
+            return 0;
+        }
+        src.sendSuccess(() -> Component.literal("Borrando la estructura #" + id + "..."), true);
+        return 1;
+    }
+
+    private static int estructuraBorrarTodas(CommandSourceStack src) {
+        int n = 0;
+        for (var r : List.copyOf(NivelEstructurasData.get(src.getServer()).estructuras)) {
+            if (NivelEstructuras.borrar(src.getServer(), r)) n++;
+        }
+        int total = n;
+        src.sendSuccess(() -> Component.literal("Borrando " + total + " estructuras..."), true);
+        return n;
+    }
+
+    private static int baseAgregar(CommandSourceStack src) throws CommandSyntaxException {
+        ServerPlayer p = src.getPlayerOrException();
+        NivelEstructurasData d = NivelEstructurasData.get(src.getServer());
+        d.bases.add(p.blockPosition().asLong());
+        d.setDirty();
+        src.sendSuccess(() -> Component.literal("Base registrada en " + p.blockPosition().toShortString()), true);
+        return 1;
+    }
+
+    private static int baseLista(CommandSourceStack src) {
+        var bases = NivelEstructurasData.get(src.getServer()).bases;
+        if (bases.isEmpty()) {
+            src.sendSuccess(() -> Component.literal("No hay bases registradas"), false);
+            return 0;
+        }
+        for (long b : bases) {
+            src.sendSuccess(() -> Component.literal("Base en " + BlockPos.of(b).toShortString()), false);
+        }
+        return bases.size();
+    }
+
+    private static int baseLimpiar(CommandSourceStack src) {
+        NivelEstructurasData d = NivelEstructurasData.get(src.getServer());
+        d.bases.clear();
+        d.setDirty();
+        src.sendSuccess(() -> Component.literal("Bases borradas"), true);
+        return 1;
+    }
     
     @SubscribeEvent
     public void onCommands(RegisterCommandsEvent e) {
