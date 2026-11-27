@@ -29,6 +29,17 @@ public class NivelServerEvents {
         NivelManager.clearPending();
     }
 
+    /** Cambio amarillo 11: cancela una parte de los spawns naturales de animales. */
+    private static final float ANIMALES_CANCELADOS = 0.75f; // 0.75 = 3 de cada 4 animales no aparecen
+
+    @SubscribeEvent
+    public void onSpawn(FinalizeSpawnEvent e) {
+        if (e.getSpawnType() != MobSpawnType.NATURAL) return;
+        if (e.getEntity().getType().getCategory() != MobCategory.CREATURE) return;
+        if (!NivelManager.active(e.getLevel().getLevel().getServer()).contains("amarillo_11")) return;
+        if (e.getLevel().getRandom().nextFloat() < ANIMALES_CANCELADOS) e.setSpawnCancelled(true);
+    }
+    
     @SubscribeEvent
     public void onCommands(RegisterCommandsEvent e) {
         LiteralArgumentBuilder<CommandSourceStack> root = Commands.literal("nivel")
