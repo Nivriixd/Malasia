@@ -49,6 +49,11 @@ public final class NivelManager {
         dat.active.add(d.key());
         dat.setDirty();
         d.alActivar().accept(s);
+        String desc = d.descripcion();
+        List<String> coords = NivelEstructuras.consumirCoords();
+        for (int i = 0; i < coords.size(); i++) {
+            desc = desc.replace("{" + (i + 1) + "}", coords.get(i));
+        }
                s.getPlayerList().broadcastSystemMessage(
                 Component.literal(d.titulo())
                         .withStyle(d.color().fmt, ChatFormatting.BOLD)
