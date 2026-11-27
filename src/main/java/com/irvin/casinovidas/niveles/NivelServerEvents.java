@@ -64,7 +64,24 @@ public class NivelServerEvents {
             }
             root.then(colorNode);
         }
+        root.then(Commands.literal("estructura")
+                .then(Commands.literal("lista").executes(ctx -> estructuraLista(ctx.getSource())))
+                .then(Commands.literal("aparecer")
+                        .then(Commands.argument("id", ResourceLocationArgument.id())
+                                .suggests((c, b) -> SharedSuggestionProvider.suggestResource(
+                                        c.getSource().registryAccess().registryOrThrow(Registries.STRUCTURE).keySet(), b))
+                                .executes(ctx -> estructuraAparecer(ctx.getSource(),
+                                        ResourceLocationArgument.getId(ctx, "id")))))
+                .then(Commands.literal("borrar")
+                        .then(Commands.literal("todas").executes(ctx -> estructuraBorrarTodas(ctx.getSource())))
+                        .then(Commands.argument("n", IntegerArgumentType.integer(1))
+                                .executes(ctx -> estructuraBorrar(ctx.getSource(),
+                                        IntegerArgumentType.getInteger(ctx, "n"))))));
 
+        root.then(Commands.literal("base")
+                .then(Commands.literal("agregar").executes(ctx -> baseAgregar(ctx.getSource())))
+                .then(Commands.literal("lista").executes(ctx -> baseLista(ctx.getSource())))
+                .then(Commands.literal("limpiar").executes(ctx -> baseLimpiar(ctx.getSource()))));
         root.then(Commands.literal("lista").executes(ctx -> lista(ctx.getSource())));
         e.getDispatcher().register(root);
     }
