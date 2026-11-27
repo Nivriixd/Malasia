@@ -22,11 +22,13 @@ public class NivelServerEvents {
     @SubscribeEvent
     public void onTick(ServerTickEvent.Post e) {
         NivelManager.tick(e.getServer());
+        NivelEstructuras.tick(e.getServer());
     }
 
     @SubscribeEvent
     public void onStopped(ServerStoppedEvent e) {
         NivelManager.clearPending();
+        NivelEstructuras.limpiar();
     }
 
     /** Cambio amarillo 11: cancela una parte de los spawns naturales de animales. */
