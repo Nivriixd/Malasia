@@ -50,7 +50,12 @@ public final class NivelEvents {
         msg(NivelColor.AMARILLO, 1, "Mobs", "Nuevos mobs spawnean.");
         add(NivelColor.AMARILLO, 2, "Nether", "Se habilita el nether.",
                 s -> NivelDims.abrir(s, NivelDims.NETHER), null);
-        msg(NivelColor.AMARILLO, 3, "Atención!", "Nuevo avistamiento en (coordenadas) y en (coordenadas), averigua qué sucedió. Quién sabe qué encontrarás.");
+        add(NivelColor.AMARILLO, 3, "Atención!",
+                "Nuevo avistamiento en {1} y en {2}, averigua qué sucedió. Quién sabe qué encontrarás.",
+                NivelEstructuras.aleatoria(
+                        new NivelEstructuras.Aleatoria(NivelEstructuras.OVERWORLD, "dungeons_arise:NOMBRE"),
+                        new NivelEstructuras.Aleatoria(NivelEstructuras.OVERWORLD, "ati_structures:NOMBRE")),
+                null);
         msg(NivelColor.AMARILLO, 4, "Atención!", "Nuevo avistamiento en (coordenadas) y en (coordenadas).");
         add(NivelColor.AMARILLO, 5, "The End", "Se habilita el end.",
                 s -> NivelDims.abrir(s, NivelDims.END), null);
