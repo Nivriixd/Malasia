@@ -9,10 +9,11 @@ public final class NivelDims {
     private NivelDims() {}
 
     public static final String NETHER = "minecraft:the_nether";
+    public static final String END = "minecraft:the_end";
     public static final String SIFT = "the_sift:the_sift";
 
     /** Dimensiones que empiezan cerradas hasta que un cambio las abra. */
-    private static final Set<String> CERRADAS_POR_DEFECTO = Set.of(SIFT);
+    private static final Set<String> CERRADAS_POR_DEFECTO = Set.of(SIFT, NETHER, END);
 
     public static boolean isOpen(MinecraftServer s, String dim) {
         Boolean st = NivelManager.data(s).dimState.get(dim);
